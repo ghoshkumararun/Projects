@@ -9,8 +9,9 @@ Student Projects for Computer Science at Southeast Asia University develop with
 
 Best Modules For Application
 =================
-- Create password with MD5 Encryption
-
+- Create password with MD5 Encryption.
+- Ckeditor is web text editor for keystrokes.
+- ColPick is jQuery plugin, Help you use the Color Picker.
 
 All the content or image are reproduced from project. If the violation of your copyright, please inform, 
 
