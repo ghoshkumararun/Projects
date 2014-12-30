@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|center_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/TextViewHeader"
+            android:layout_marginRight="10dp"
+            android:text="@string/sign_in" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_web_site" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/email" />
+
+        <EditText
+            android:id="@+id/edt_email"
+            style="@style/EditText"
+            android:inputType="textEmailAddress" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/password" />
+
+        <EditText
+            android:id="@+id/edt_password"
+            style="@style/EditText"
+            android:inputType="textPassword" >
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/TextView"
+            android:text="" />
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="end" >
+
+            <Button
+                android:id="@+id/btn_login"
+                style="@style/LoginButton"
+                android:text="@string/login" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="start"
+        android:padding="20dp" >
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:gravity="start"
+            android:text="@string/comment" />
+    </LinearLayout>
+
+</LinearLayout>

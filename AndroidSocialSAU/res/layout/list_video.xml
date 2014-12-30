@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="top|center_horizontal"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|center_vertical" >
+
+        <TextView
+            android:id="@+id/lb_video_name"
+            style="@style/TextViewList"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/video" />
+
+        <ImageView
+			style="@style/ic_item"            
+            android:src="@drawable/ic_action_video" />
+    </LinearLayout>
+
+</LinearLayout>

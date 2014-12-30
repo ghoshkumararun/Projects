@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="top|center_horizontal"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|center_vertical" >
+
+        <TextView
+            android:id="@+id/lb_tutorial"
+            style="@style/TextViewList"
+            android:layout_width="150dp"
+            android:text="@string/tutorial"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/image_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_time" />
+        
+
+        <TextView
+            android:id="@+id/lb_updateTutorial"
+            style="@style/TextViewList"
+            android:layout_width="100dp"
+            android:textSize="13sp"
+            android:text="CreateTutorial" />
+
+        <ImageView
+            style="@style/ic_item"
+            android:src="@drawable/ic_action_next_item" />
+    </LinearLayout>
+
+</LinearLayout>
