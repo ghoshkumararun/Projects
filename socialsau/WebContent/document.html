@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<!-- jQuery 
+$('#frmAddUser').submit(function() {}
+$('#indicator').css({ display: 'block' });
+
+CKEDITOR.instances.editorTutorial.getData() เอาข้อมูล html // id or name
+CKEDITOR.instances.editorTutorial.document.getBody().getText(); เอาข้อมูล text
+
+var groupTutorial = $('#groupTutorial option:selected').val();
+
+$.each(data, function(idx, obj){
+
+}
+
+$('li.item-question').each(function(idx) {
+	var chapterId = $(this).data('id');
+	var chapterNo = idx + 1;
+	// ChapterId(PK):ChapterNo, ...
+	concatPkAndChapterNo += chapterId + ":" + chapterNo + ", ";
+});
+
+// radio
+var answer = $('.rdoAnswer:checked').val();
+
+// checkbox
+$('.chkAnswer:checked').each(function() {
+	answer += $(this).val() + ' ';
+});
+
+// dropdown
+$(document).on('change', '.status', function() {}
+
+onclick="return deleteChapter('${tutorial.tutorialId}', '${chapter.chapterId}')"
+
+location.reload();
+
+$('.postDetail[data-id=' + postId + ']').text(postDetail);
+
+$('#firstname').removeAttr('disabled');
+$('#show-background').attr('style', 'background-color: #' + hex + '; height: 150px;');
+-->
+
+<!-- JAVA 
+
+	sessionScope['user']
+	
+	FilenameUtils.getExtension(uploadFileName) นามสกุลของ File
+	
+	File dirStore = new File(path + "\\resources\\photos-tutorial\\" + tutorialFileUpload.getTutorialId());
+	
+	ถ้าไม่มีไฟล์
+	if (!dirStore.exists()) { 
+		System.out.println("create diractory : " + dirStore.getPath());
+		dirStore.mkdir(); // Create directory
+	}
+	
+	ลบไฟล์บน Server
+	File dirPhotoClean = new File(path + File.separator + "resources" + File.separator + "photos-tutorial" + File.separator + tutorialId + ".jpg");
+	FileUtils.forceDelete(dirPhotoClean); 
+	
+	เช็คไฟล์รูป
+	if (!uploadContentType.equals("image/bmp") && !uploadContentType.equals("image/gif") && !uploadContentType.equals("image/jpeg") && !uploadContentType.equals("image/png")) {
+	// ถ้าไฟล์ไม่เท่ากับ bmp, gif, jpeg และ png (ไฟล์ผิด ไม่ตรงกับด้านบน)
+	}
+	
+	
+	request.getMethod().equals("POST")
+ -->
+
+</body>
+</html>

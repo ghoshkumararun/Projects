@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.action.extension" value="," />
+
+	<!-- <package name="interceptor" extends="struts-default">
+		<interceptors>
+			<interceptor name="authentication" class="com.sau.socialsau.util.AuthenticationInterceptor"></interceptor>
+		</interceptors>
+		<default-interceptor-ref name="authentication"></default-interceptor-ref>
+		
+		<global-results>
+            <result name="login" type="redirect">/login</result>
+        </global-results>
+	</package> -->
+
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="login">
+			<result>/pages/login/login.jsp</result>
+		</action>
+		<action name="logout" class="com.sau.socialsau.action.LoginAction" method="logout">
+			<result name="success" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<action name="register">
+			<result>/pages/user/register.jsp</result>
+		</action>
+		
+		<action name="main" class="com.sau.socialsau.action.MainAction">
+			<result name="success">/pages/main/main.jsp</result>
+			<result name="login" type="redirect">/login</result>
+		</action>
+		
+	</package>
+	
+	<package name="login" namespace="/login" extends="struts-default">
+		<action name="login-submit" class="com.sau.socialsau.action.LoginAction" method="loginSubmit">
+			<result name="success" type="redirectAction">
+				<param name="actionName">main</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="input">/pages/login/login.jsp</result>
+		</action>
+	</package>
+
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="addUser" class="com.sau.socialsau.action.UserAction" method="addUser">
+			<!-- <result name="success" type="redirectAction">
+				<param name="actionName">checkConfirmCode</param>
+				<param name="namespace">/user</param>
+			</result> -->
+			<result name="success">/pages/user/register.jsp</result>
+			<result name="input">/pages/user/register.jsp</result>
+		</action>
+		
+		<action name="checkConfirmCode" class="com.sau.socialsau.action.UserAction">
+			<result name="success">/pages/user/confirm-code.jsp</result>
+		</action>
+		<action name="checkConfirmCodePerform" class="com.sau.socialsau.action.UserAction" method="checkConfirmCodePerform">
+			<result name="success">/pages/login/login.jsp</result>
+			<result name="input">/pages/user/confirm-code.jsp</result>
+			<!-- <result name="input" type="redirectAction">
+			    <param name="actionName">checkConfirmCode</param>
+				<param name="namespace">/user</param>
+			</result> -->
+		</action>
+		
+	</package>
+	
+	<package name="main" namespace="/main" extends="struts-default">
+		<action name="tutorial" class="com.sau.socialsau.action.MainAction" method="tutorial">
+			<result name="success">/pages/main/tutorial/tutorial.jsp</result>
+			<result name="input" type="redirectAction">
+			    <param name="actionName">main</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="chapter" class="com.sau.socialsau.action.MainAction" method="chapter">
+			<result name="success">/pages/main/tutorial/chapter.jsp</result>
+			<result name="input" type="redirectAction">
+			    <param name="actionName">main</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="video" class="com.sau.socialsau.action.MainAction" method="video">
+			<result name="success">/pages/main/tutorial/video.jsp</result>
+			<result name="input" type="redirectAction">
+			    <param name="actionName">main</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="questions" class="com.sau.socialsau.action.MainAction" method="questions">
+			<result name="success">/pages/main/tutorial/question/questions.jsp</result>
+			<result name="input" type="redirectAction">
+			    <param name="actionName">main</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="questionsAnswer" class="com.sau.socialsau.action.MainAction" method="questionsAnswer">
+		    <result name="success">/pages/main/tutorial/question/question-answer.jsp</result>
+		    <result name="input" type="redirectAction">
+			    <param name="actionName">main</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="questionStart" class="com.sau.socialsau.action.MainAction" method="questionStart">
+			<result>/pages/main/tutorial/question/questions-start-radio.jsp</result>
+			<result name="input" type="redirectAction">
+			    <param name="actionName">main</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="saveAnswerAndScore" class="com.sau.socialsau.action.MainAction" method="saveAnswerAndScore">
+			<result type="stream">
+		        <param name="contentType">text/html</param>
+		        <param name="inputName">stream</param>
+		    </result>
+		</action>
+	</package>
+	
+	<!-- <package name="contact" namespace="/contact" extends="struts-default">
+	    <action name="send" class="com.sau.socialsau.action.ContactAction">
+			<result>/pages/main/contact/contact.jsp</result>
+		</action>
+		<action name="sendPerformAjax" class="com.sau.socialsau.action.ContactAction" method="sendPerformAjax" />
+		<action name="receive" class="com.sau.socialsau.action.ContactAction" method="receive">
+		    <result>/pages/main/contact/receive.jsp</result>
+		</action>
+	</package> -->
+	
+	<package name="admin" namespace="/admin" extends="struts-default">
+	    <action name="userContact" class="com.sau.socialsau.action.AdminAction" method="userContact">
+			<result name="success">/pages/main/admin/user-contact.jsp</result>	        
+	    </action>
+	    <action name="answerQuestion" class="com.sau.socialsau.action.AdminAction" method="answerQuestion">
+			<result name="success">/pages/main/admin/answer-question.jsp</result>	        
+	    </action>
+	    <action name="answerQuestionUpdateAjax" class="com.sau.socialsau.action.AdminAction" method="answerQuestionUpdateAjax" />
+	</package>
+	
+	<package name="profile" namespace="/profile" extends="struts-default">
+		<action name="*" class="com.sau.socialsau.action.ProfileAction" method="profile">
+			<result>/pages/main/profile/profile.jsp</result>
+		</action>
+		<!-- post Ajax  -->
+		<action name="postAjax" class="com.sau.socialsau.action.ProfileAction"  method="postAjax" />
+		
+		<!-- Edit Ajax -->
+		<action name="editPostAjax" class="com.sau.socialsau.action.ProfileAction"  method="editPostAjax" />
+		
+		<!-- Delete Ajax -->
+		<action name="deletePostAjax" class="com.sau.socialsau.action.ProfileAction"  method="deletePostAjax" />
+	</package>
+	
+	<package name="friend" namespace="/friend" extends="struts-default">
+		<action name="all" class="com.sau.socialsau.action.FriendAction" method="all">
+			<result name="success">/pages/main/friend.jsp</result>
+		</action>
+	</package>
+	
+	<!-- detault 2097152 (2Mb), 1MB = 1,000,000 byte -->
+	<constant name="struts.multipart.maxSize" value="30000000" />
+	<package name="upload" namespace="/upload" extends="struts-default">
+		<action name="fileupload" class="com.sau.socialsau.action.UploadAction" method="fileupload">
+			<result name="success">/pages/main/profile/photo-upload.jsp</result>
+		</action>
+		<action name="fileuploadPerform" class="com.sau.socialsau.action.UploadAction" method="fileuploadPerform">
+			<result name="success">/pages/main/profile/photo-upload.jsp</result>
+			<result name="error">/pages/main/profile/photo-upload.jsp</result>
+		</action>
+		<action name="deletePhotoUpload" class="com.sau.socialsau.action.UploadAction" method="deletePhotoUpload" />
+	</package>
+	
+	<package name="setting" namespace="/setting" extends="struts-default">
+		<action name="personalData" class="com.sau.socialsau.action.SettingAction" method="personalData">
+			<result name="success">/pages/main/setting/personal-data.jsp</result>
+		</action>
+		<action name="template" class="com.sau.socialsau.action.SettingAction" method="template">
+			<result name="success">/pages/main/setting/template.jsp</result>
+		</action>
+		<action name="changePassword" class="com.sau.socialsau.action.SettingAction" method="changePassword">
+			<result name="success">/pages/main/setting/change-password.jsp</result>
+			<result name="input">/pages/main/setting/change-password.jsp</result>
+		</action>
+		
+		<action name="photoManagement" class="com.sau.socialsau.action.SettingAction" method="photoManagement">
+			<result name="success">/pages/main/setting/photo-management.jsp</result>
+		</action>
+		<action name="deletePhoto" class="com.sau.socialsau.action.SettingAction" method="deletePhoto">
+			<result name="success">/pages/main/setting/photo-management.jsp</result>
+		</action>
+		
+		<action name="profilePhotoStep1" class="com.sau.socialsau.action.SettingAction" method="profilePhotoStep1">
+			<result name="success">/pages/main/setting/profile-photo-step1.jsp</result>
+		</action>
+		<action name="profilePhotoStep2" class="com.sau.socialsau.action.SettingAction" method="profilePhotoStep2">
+			<result name="success">/pages/main/setting/profile-photo-step2.jsp</result>
+			<!-- <result name="input" type="redirectAction">
+				<param name="actionName">photo</param>
+				<param name="namespace">/setting</param>
+			</result> -->
+		</action>
+		<action name="profilePhotoStep2Ajax" class="com.sau.socialsau.action.SettingAction" method="profilePhotoStep2Ajax" />
+		
+		<action name="personalDataUpdateAjax" class="com.sau.socialsau.action.SettingAction" method="personalDataUpdateAjax" />
+		<action name="templateUpdateAjaxColor" class="com.sau.socialsau.action.SettingAction" method="templateUpdateAjaxColor" />
+	</package>
+
+	<package name="group" namespace="/group" extends="struts-default">
+		<action name="createGroup" class="com.sau.socialsau.action.GroupAction" method="createGroup">
+			<result name="success">/pages/main/management/group/create-group.jsp</result>
+		</action>
+		<!-- Ajax Create -->
+		<action name="createGroupPerformAJAX" class="com.sau.socialsau.action.GroupAction" method="createGroupPerformAJAX" />
+		
+		<action name="changeGroup" class="com.sau.socialsau.action.GroupAction" method="changeGroup">
+			<result name="success">/pages/main/management/group/change-group.jsp</result>
+		</action>
+		<!-- Ajax Edit -->
+		<action name="changeGroupPerformAJAX" class="com.sau.socialsau.action.GroupAction" method="changeGroupPerformAJAX" />
+		
+		<action name="deleteGroup" class="com.sau.socialsau.action.GroupAction" method="deleteGroup">
+			<result name="success">/pages/main/management/group/delete-group.jsp</result>
+		</action>
+		
+		<!-- Find Group ที่มีความสัมพันธ์กับ Group ทั้งหมด -->
+		<action name="findGroupRelationship" class="com.sau.socialsau.action.GroupAction" method="findGroupRelationship">
+		    <result type="stream">
+		        <param name="contentType">text/html</param>
+		        <param name="inputName">stream</param>
+		    </result>
+		</action>
+		<!-- Ajax Delete ลบข้อมูลทุกอย่างที่เกี่ยวข้องของ groupId ทั้งหมด -->
+		<action name="deleteGroupPerformAJAX" class="com.sau.socialsau.action.GroupAction" method="deleteGroupPerformAJAX" />
+		
+		<action name="updateGroupStatusAjax" class="com.sau.socialsau.action.GroupAction" method="updateGroupStatusAjax" />
+	</package>
+	
+	<package name="tutorial" namespace="/tutorial" extends="struts-default">
+		<action name="all" class="com.sau.socialsau.action.TutorialAction" method="all">
+			<result name="success">/pages/main/management/all-tutorial.jsp</result>
+		</action>
+		<action name="createTutorial" class="com.sau.socialsau.action.TutorialAction" method="createTutorial">
+			<result name="success">/pages/main/management/tutorial/create-tutorial.jsp</result>
+		</action>
+		<!-- Ajax Create -->
+		<action name="createTutorialPerform" class="com.sau.socialsau.action.TutorialAction" method="createTutorialPerform">
+		    <result name="success" type="redirectAction">
+				<param name="actionName">all</param>
+				<param name="namespace">/tutorial</param>
+			</result> 
+		    <result name="error">/pages/main/management/tutorial/create-tutorial.jsp</result>
+		</action>
+		
+		<action name="viewTutorial" class="com.sau.socialsau.action.TutorialAction" method="viewTutorial">
+			<result name="success">/pages/main/management/tutorial/view-tutorial.jsp</result>
+		</action>
+		
+		<action name="editTutorial" class="com.sau.socialsau.action.TutorialAction" method="editTutorial">
+			<result name="success">/pages/main/management/tutorial/edit-tutorial.jsp</result>
+		</action>
+		<!-- Ajax Edit -->
+		<action name="editTutorialPerform" class="com.sau.socialsau.action.TutorialAction" method="editTutorialPerform" >
+			<result name="success" type="redirectAction">
+				<param name="actionName">all</param>
+				<param name="namespace">/tutorial</param>
+			</result> 
+		    <result name="error">/pages/main/management/tutorial/edit-tutorial.jsp</result>
+		</action>
+		
+		<!-- Ajax Find relationship ค้นหาความสัมพันธ์ ของตารางที่มีการอ้างถึง tutorial คือ chapter, question และ video เพื่อเช็คข้อมูล -->
+		<action name="findTutorialRelationship" class="com.sau.socialsau.action.TutorialAction" method="findTutorialRelationship">
+			<result type="stream">
+		        <param name="contentType">text/html</param>
+		        <param name="inputName">stream</param>
+		    </result>
+		</action>
+		<!--Ajax delete Tutorial -->
+		<action name="deleteTutorialAJAX" class="com.sau.socialsau.action.TutorialAction" method="deleteTutorialAJAX" />
+		
+		<!-- Ajax update status tutorial -->
+		<action name="updateTutorialStatusAjax" class="com.sau.socialsau.action.TutorialAction" method="updateTutorialStatusAjax" />
+	</package>
+	
+	<package name="chapter" namespace="/chapter" extends="struts-default">
+		<action name="allChapter" class="com.sau.socialsau.action.ChapterAction" method="allChapter">
+			<result name="success">/pages/main/management/chapter/all-chapter.jsp</result>
+		</action>
+		<action name="createChapter" class="com.sau.socialsau.action.ChapterAction" method="createChapter">
+			<result name="success">/pages/main/management/chapter/create-chapter.jsp</result>
+		</action>
+		<!-- Ajax Create -->
+		<action name="createChapterSaveAJAX" class="com.sau.socialsau.action.ChapterAction" method="createChapterSaveAJAX" />
+		
+		<action name="descriptionChapter" class="com.sau.socialsau.action.ChapterAction" method="descriptionChapter">
+			<result name="success">/pages/main/management/chapter/description-chapter.jsp</result>		
+		</action>
+		
+		<action name="editChapter" class="com.sau.socialsau.action.ChapterAction" method="editChapter">
+			<result name="success">/pages/main/management/chapter/edit-chapter.jsp</result>
+		</action>
+		<!-- Ajax Edit -->
+		<action name="editChapterEditAJAX" class="com.sau.socialsau.action.ChapterAction" method="editChapterEditAJAX" />
+		
+		<action name="changeChapter" class="com.sau.socialsau.action.ChapterAction" method="changeChapter">
+			<result name="success">/pages/main/management/chapter/change-chapter.jsp</result>
+		</action>
+		<!-- Ajax Edit Stream -->
+		<action name="changeChapterPerformAJAX" class="com.sau.socialsau.action.ChapterAction" method="changeChapterPerformAJAX">
+			<result type="stream">
+		        <param name="contentType">text/html</param>
+		        <param name="inputName">stream</param>
+		    </result>
+		</action>
+		
+		<!-- Ajax Delete -->
+		<action name="deleteChapterAJAX" class="com.sau.socialsau.action.ChapterAction" method="deleteChapterAJAX" />
+		
+		<action name="updateChapterStatusAjax" class="com.sau.socialsau.action.ChapterAction" method="updateChapterStatusAjax" />
+	</package>
+	
+	<package name="question" namespace="/question" extends="struts-default">
+		<action name="allQuestion" class="com.sau.socialsau.action.QuestionAction" method="allQuestion">
+			<result name="success">/pages/main/management/question/all-question.jsp</result>
+		</action>
+		
+		<action name="editQuestion" class="com.sau.socialsau.action.QuestionAction" method="editQuestion">
+			<result name="success">/pages/main/management/question/edit-question-radio.jsp</result>
+		</action>
+		<!-- AJAX Edit ข้อมูล question -->
+		<action name="editQuestionPerformAJAX" class="com.sau.socialsau.action.QuestionAction" method="editQuestionPerformAJAX" />
+		
+		<action name="createQuestion" class="com.sau.socialsau.action.QuestionAction" method="createQuestion">
+			<result name="success">/pages/main/management/question/create-question-radio.jsp</result>
+		</action>
+		
+		<!-- Ajax Create question -->
+		<action name="createQuestionPerformAJAX" class="com.sau.socialsau.action.QuestionAction" method="createQuestionPerformAJAX" />
+		
+		<!-- Ajax Delete question -->
+		<action name="deleteQuestionPerformAJAX" class="com.sau.socialsau.action.QuestionAction" method="deleteQuestionPerformAJAX" />
+		
+		<action name="updateQuestionStatusAjax" class="com.sau.socialsau.action.QuestionAction" method="updateQuestionStatusAjax" />
+	</package>
+	
+	<package name="video" namespace="/video" extends="struts-default">
+	    <action name="allVideo" class="com.sau.socialsau.action.VideoAction" method="allVideo">
+	        <result name="success">/pages/main/management/video/all-video.jsp</result>
+	    </action>
+	    <action name="createVideo" class="com.sau.socialsau.action.VideoAction" method="createVideo">
+	        <result name="success">/pages/main/management/video/create-video.jsp</result>
+	    </action>
+	    <action name="editVideo" class="com.sau.socialsau.action.VideoAction" method="editVideo">
+	        <result name="success">/pages/main/management/video/edit-video.jsp</result>
+	    </action>
+	    <action name="createVideoPerformAJAX" class="com.sau.socialsau.action.VideoAction" method="createVideoPerformAJAX" />
+	    <action name="editVideoPerformAJAX" class="com.sau.socialsau.action.VideoAction" method="editVideoPerformAJAX" />
+	    <action name="deleteVideoPerformAJAX" class="com.sau.socialsau.action.VideoAction" method="deleteVideoPerformAJAX" />
+	    
+	    <action name="updateVideoStatusAjax" class="com.sau.socialsau.action.VideoAction" method="updateVideoStatusAjax" />
+	</package>
+	
+	<package name="json" namespace="/json" extends="struts-default, json-default">
+	    <action name="loadContactAdmin" class="com.sau.socialsau.action.JSONAction" method="loadContactAdmin">
+			<result name="success" type="json">
+        		<param name="root">contacts</param>
+			</result>
+		</action>
+		<!-- <action name="searchContactUserJSON" class="com.sau.socialsau.action.JSONAction" method="searchContactUserJSON">
+			<result name="success" type="json">
+        		<param name="root">searchContact</param>
+			</result> 
+		</action> -->
+	    
+		<!-- <action name="loadAllGroup" class="com.sau.socialsau.action.JSONAction" method="loadAllGroup">
+			<result name="success" type="json">
+        		<param name="root">groups</param>
+			</result>
+		</action> -->
+		<action name="tutorialsByGroupId" class="com.sau.socialsau.action.JSONAction" method="tutorialsByGroupId">
+			<result name="success" type="json">
+        		<param name="root">tutorialsJSON</param>
+			</result>
+		</action>
+		<action name="loadChartJSON" class="com.sau.socialsau.action.JSONAction" method="loadChartJSON">
+			<result name="success" type="json">
+        		<param name="root">scores</param>
+			</result> 
+		</action>
+		<!-- หน้า Friends -->
+		<action name="searchFriendsJSON" class="com.sau.socialsau.action.JSONAction" method="searchFriendsJSON">
+			<result name="success" type="json">
+        		<param name="root">friendsJson</param>
+			</result> 
+		</action>
+	</package>
+	
+</struts>
