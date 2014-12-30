@@ -12,6 +12,12 @@ Best Modules For Application
 - Create password with MD5 Encryption.
 - Ckeditor is web text editor for keystrokes.
 - ColPick is jQuery plugin, Help you use the Color Picker.
+- imgAreaSelect is a jQuery plugin for selecting a rectangular area of an image.
+- jQuery UI use for user interface interactions, effects, widgets and themes.
+- jQuery Countdown uses to set to show a countdown to a given time.
+- Bootstrap 3 uses for developing responsive projects on the web.
+- Highcharts uses to summarize to display graphs from database MySQL.
+- jQuery Magnific Popup uses for the zoom effect gallery.
 
 All the content or image are reproduced from project. If the violation of your copyright, please inform, 
 
