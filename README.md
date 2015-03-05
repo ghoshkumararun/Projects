@@ -1,4 +1,4 @@
-Project-THANATORN
+Projects
 =================
 
 Student Projects for Computer Science at Southeast Asia University develop with
