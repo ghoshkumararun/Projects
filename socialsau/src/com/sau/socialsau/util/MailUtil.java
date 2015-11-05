@@ -28,7 +28,7 @@ public class MailUtil {
 		// เมล์ที่ส่ง
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("thanatorn.sendmail@gmail.com", "new123456789");
+						return new PasswordAuthentication("xxxxxxxx", "xxxxxxxxx");
 					}
 				});
 		try {
